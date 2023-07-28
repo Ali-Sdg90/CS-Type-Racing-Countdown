@@ -1,8 +1,10 @@
 // ------------------------
 
-const raceTime = [21, 13]; // [hh, mm]
+const raceTime = [22, 00]; // [hh, mm]
 const raceMessage = `
 Aloha, This is enticing message!
+
+.
 `;
 
 // ------------------------
