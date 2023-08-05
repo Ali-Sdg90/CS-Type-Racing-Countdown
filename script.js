@@ -32,25 +32,46 @@ function getRemainingTime() {
 }
 
 const pageContent = document.getElementById("page");
-let iterationCounter = 0;
 let endOfTimer = false;
 let output = "";
+let square = "";
 
-const addHighlights = () => {
-    if (iterationCounter % 2 === 0) {
-        output += "⬜️";
-    } else {
-        output += "⬛️";
+const addSquares = () => {
+    switch (Math.floor(Math.random() * 8)) {
+        case 0:
+            square = "🟥";
+            break;
+        case 1:
+            square = "🟧";
+            break;
+        case 2:
+            square = "🟨";
+            break;
+        case 3:
+            square = "🟩";
+            break;
+        case 4:
+            square = "🟦";
+            break;
+        case 5:
+            square = "🟪";
+            break;
+        case 6:
+            square = "⬛️";
+            break;
+        case 7:
+            square = "⬜️";
+            break;
+        default:
+            break;
     }
 };
 
 useEmoji = (timeString) => {
-    output = "";
-    iterationCounter++;
+    addSquares();
+    output = square;
     // console.log(timeString);
     if (!endOfTimer) {
-        addHighlights();
-
         for (let i = 0; i < timeString.length; i++) {
             let replacement = "";
             switch (timeString.charAt(i)) {
@@ -92,7 +113,7 @@ useEmoji = (timeString) => {
             }
             output += replacement;
         }
-        addHighlights();
+        output += square;
     } else {
         output = "🎉🎉🎉🎉🎉🎉🎉🎉";
     }
