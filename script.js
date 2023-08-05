@@ -1,6 +1,7 @@
 // ------------------------
 
-const raceTime = [22, 00]; // [hh, mm]
+const raceTime = new Date("2023-08-06T22:00:00"); // YYYY-MM-DDThh:mm:ss
+
 const raceMessage = `
 
 🔊 دورهمی هفتگی سی اس فردا یکشنبه ساعت 22:00
@@ -21,13 +22,14 @@ const raceMessage = `
 // ------------------------
 
 function getRemainingTime() {
-    const endTime = new Date();
-    endTime.setHours(raceTime[0], raceTime[1], 0);
-    const timeDiff = (endTime - new Date()) / 1000;
+    const endTime = raceTime.getTime();
+    const currentTime = new Date().getTime();
+    let timeDiff = (endTime - currentTime) / 1000;
+
     return {
-        hours: Math.trunc(timeDiff / 3600),
-        minutes: Math.trunc((timeDiff / 60) % 60),
-        seconds: Math.trunc(timeDiff % 60),
+        hours: Math.floor(timeDiff / 3600),
+        minutes: Math.floor((timeDiff % 3600) / 60),
+        seconds: Math.floor(timeDiff % 60),
     };
 }
 
